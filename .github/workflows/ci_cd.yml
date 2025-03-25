@@ -57,12 +57,17 @@ jobs:
         # Optional: List repository files to verify the docker-compose file exists
         - name: List repository files
           run: ls -al
+       
        #Step 5: 
+        # - name: Build Docker Image
+        #   run: |
+        #     docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/backend_flask:latest .
+        #     # make sure that your dockerhub repo name matches as this line (backend_flask)
         - name: Build Docker Image
           run: |
             docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/backend_flask:latest .
             # make sure that your dockerhub repo name matches as this line (backend_flask)
-
+   
         # Make sure that your Docker Hub repo name matches this line (backend_flask)
     # Go to dockerhub.com
     # Create a new repository - backend_flask
@@ -73,15 +78,15 @@ jobs:
     # https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions
     #### 
 
-    # Step 6: # Log in to Docker Hub
-        - name: Log in to Docker Hub
-          run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username 
-           ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    # # Step 6: # Log in to Docker Hub
+    #     - name: Log in to Docker Hub
+    #       run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username 
+    #        ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
 
 
-    # Step 7: #Push the Docker image to Docker Hub
-        - name: Push Docker Image
-          run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/backend_flask:latest
+    # # Step 7: #Push the Docker image to Docker Hub
+    #     - name: Push Docker Image
+    #       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/backend_flask:latest
 
     
